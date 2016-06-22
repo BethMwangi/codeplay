@@ -15,7 +15,8 @@ A python web application that connects HIV+ people anonymously
 
 
 #### Made by codeplay with love.
-Codeplay is a team that costitutes:
+   Codeplay is a team that costitutes:
+
 1. [Cynthia](https://github.com/misoi)
 2. [Elsis](https://github.com/Elsis-Sitati)
 3. [Beth](https://github.com/BethMwangi)
@@ -23,5 +24,6 @@ Codeplay is a team that costitutes:
 
 
 
-TO DO
-- Change name
+#Name: WeSupport
+
+
