@@ -1,18 +1,30 @@
 ## codeplay
-A python web application that connects HIV+ people anonymously
+
+                                 #WeSupport
+WeSupport is a python web application that connects HIV positive people. The people that interact with the application are people living with aids,counsellors and nutrionists.People living with aids have anonymous identities and therefore their identity is protected.Users first have to register with the application before using it.However,ONLY the admin can register the doctors and nutrionists.The users can make posts and users who are logged into the app can see the posts and comment on them.Doctors and nutrionists can also make posts and everyone logged into the application can see them.Users can provide emotional support to each other as well as plan for meet ups where they can congregate and discuss issues affecting them.The application also provides a chat room where people can chat privately.
 
 
-### Features:
-1. Nutrition aldvice by nutritional advice
-2. Users are anonymous
-3. Chat Room module where users can chat with each other and also with counselors.
-4. Stories about the patients and their experiences.
-5. Have emergency contact numbers
-6. Doctors offer advice
-7. Offer a moral and emotional support in groups
-8. Person can comment a post and guys can comment.
+### Features in the app:
+1.Users register with their email upon which they are prompted to create an alias which they will use in the web app.Th alias will 
+be their identity
+2.Admin side which registers doctors,nutritionists and provide them with their logging information
+3.Log in form where people provide the information they used to register.Once the information is verified users are then directed to the homepage
+4.The homepage has posts from the users and comment secctions for this posts
+6.Users can view and edit their profiles
+7. A chat room where people can communicate privately and therefore other users cannot see this conversation
+8.A calendar for a meetup
 
+ 
+###Tech Stack
 
+Frontend
+*Foundation
+
+Back end
+*Python
+*Flask
+*Mongo db
+*SocketTools
 
 #### Made by codeplay with love.
    Codeplay is a team that costitutes:
