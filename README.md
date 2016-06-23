@@ -16,15 +16,14 @@ be their identity
 
  
 ###Tech Stack
-
-Frontend
+Front end
 1. Foundation
 
-Back end
-1. Python
-2. Flask
+Backend
+1. Flask
+2. Python
 3. Mongo db
-4. SocketTools
+4. Socket tools
 
 ###Tools
 1. Github - For project collaboration and version control
