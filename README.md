@@ -21,17 +21,17 @@ Frontend
 1. Foundation
 
 Back end
-1.Python
-2.Flask
-3.Mongo db
-4.SocketTools
+1. Python
+2. Flask
+3. Mongo db
+4. SocketTools
 
 ###Tools
-1.Github - For project collaboration and version control
-2.Whatsapp - For communication between group members
-3.Gitter - Sharing resources and consulting
-4.Pidoco - Making wireframes
-5.Scrum - Monitoring progress
+1. Github - For project collaboration and version control
+2. Whatsapp - For communication between group members
+3. Gitter - Sharing resources and consulting
+4. Pidoco - Making wireframes
+5. Scrum - Monitoring progress
 
 #### Made by codeplay with love.
    Codeplay is a team that costitutes:
