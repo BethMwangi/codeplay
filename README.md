@@ -16,10 +16,10 @@ be their identity
 
  
 ###Tech Stack
-Front end
+Front end  
 1. Foundation
 
-Backend
+Backend  
 1. Flask  
 2. Python  
 3. Mongo db  
