@@ -20,9 +20,9 @@ Front end
 1. Foundation
 
 Backend
-1. Flask
-2. Python
-3. Mongo db
+1. Flask  
+2. Python  
+3. Mongo db  
 4. Socket tools
 
 ###Tools
