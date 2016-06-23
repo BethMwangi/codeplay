@@ -11,7 +11,7 @@ be their identity
 3.Log in form where people provide the information they used to register.Once the information is verified users are then directed to the homepage
 4.The homepage has posts from the users and comment secctions for this posts
 6.Users can view and edit their profiles
-7. A chat room where people can communicate privately and therefore other users cannot see this conversation
+7.A chat room where people can communicate privately and therefore other users cannot see this conversation
 8.A calendar for a meetup
 
  
