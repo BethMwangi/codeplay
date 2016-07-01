@@ -1,37 +1,26 @@
 <!--page for registering-->
-{% extends "layout.html" %} {% block body %}
+{% extends "layout.html" %}
+{% block body %}
 <!--creating register form-->
-<div class="row landing expanded" id="registerpage">
-	<div class="small-12 large-4 large-centered form-box columns">
-		<h2>WE SUPPORT</h2>
-		<hr>
-		<form method="post" action="{{url_for('register')}}">
-			<div class="row">
-				<div class="medium-6  large-12 columns">
-					<label>
-						<input type="text" name="username" placeholder="Username">
-					</label>
-				</div>
-				<div class="medium-6  large-12 columns">
-					<label>
-						<input type="email" name="email" placeholder="Email">
-					</label>
-				</div>
-				<div class="medium-6  large-12 columns">
-					<label>
-						<input type="password" name="password" placeholder="Password">
-					</label>
-				</div>
-				<div class="medium-6  large-12 columns">
-					<label>
-						<input type="password" name="confirm_password" placeholder="Confirm_Password">
-					</label>
-				</div>
-				<div class="small-12 large-12 columns">
-					<input type="submit" class="button" value="Register">
-				</div>
-			</div>
-		</form>
-	</div>
+<div class="row" id="registerpage">
+  <div class="small-12 large-12 columns" >
+      <form method="post" action="{{url_for('register')}}">
+        <div class="row">
+            <div class="medium-6  large-12 columns">
+                <label>User Name
+                 <input type="text" name="username" placeholder="Username" >
+                </label>
+             </div>
+            <div class="medium-6  large-12 columns">
+                <label>Password
+                <input type="text" name="password" placeholder="Password"  >
+                </label>
+             </div>
+            <div class="small-12 large-12 columns">
+                <input type="submit" class="button" value="Register">
+            </div>
+        </div>
+    </form>
+  </div>
 </div>
 {% endblock %}
