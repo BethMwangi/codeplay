@@ -1,68 +1,108 @@
 # -*- encoding: utf-8 -*-
 # begin
 
+from app import app
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import ForeignKey
+#from sqlalchemy import Column
+from sqlalchemy.orm import relationship
 from datetime import datetime
 datetime.utcnow()
-#from app import db
+from app import db
 
 db = SQLAlchemy(app)
 
 class User(db.Model):
+    #table name in database
     __table__name ="user"
-    username = db.Column('username',  db.VarChar, primary_key = True, unique=True)
+    username = db.Column('username',  db.String, primary_key = True, unique=True)
+    #email is unique
     email = db.Column('email', db.Unicode, unique= True)
-    password = db.Column('password', db.VarChar)
-    confirm_password = db.Column('confirm_password', db.VarChar)
-    
-    
+    #password, max =255
+    password = db.Column('password', db.String(255))
+    confirm_password = db.Column('confirm_password', db.String)
+
+    def __init__(self, username, email, password):
+        self.username = firstname.title()
+        self.email = email.lower()
+        self.set_password(password)
+
+    def set_password(self, password):
+        self.pwdhash = generate_password_hash(password)
+        
+    def check_password(self, password):
+        return check_password_hash(self.pwdhash, password)
+
+#	def check_password(self, password):
+#        return  check_password_hash(self.pwdhash, password)
+#        
+
+
 class Posts(db.Model):
     __tablename__ ="posts"
     post_id = db.Column('post_id', db.Integer, primary_key = True)
-    post = db.Column('post', db.VarChar)
+    post = db.Column('post', db.String)
     
-    username = db.relationship('User', foreign_keys = username)
-    counsellor_id = db.relationship('Counsellor', foreign keys = counsellor_id)
+    #user relation 
+    username = relationship('User')
+    username = db.Column(db.String, ForeignKey('username'))
     
+    counsellor = relationship('Counsellor')
+    counsellor_id = db.Column(db.String, ForeignKey('counsellor_id'))
+    
+#    username = db.relationship('User', foreign keys = 'username')
+#    counsellor_id = db.relationship('Counsellor', foreign keys = 'counsellor_id')
+
 class Counsellor(db.Model):
     __tablename__  = "counsellor"
-    counsellor_id  = db.Column('counsellor_id',  db.VarChar, primary_key = True, unique=True)
-    name = db.Column('username',  db.VarChar)
+    #setting the counsellor_id to primary key 
+    counsellor_id  = db.Column('counsellor_id',  db.String, primary_key = True, unique=True)
+    name = db.Column('name',  db.String)
     email = db.Column('email', db.Unicode, unique= True)
     phone_number = db.Column('username',  db.Integer)
-    avatar = db.Column('avatar', db.blob)
-    profession = db.Column('profession', db.VarChar)  
-    about = db.Column('about', db.VarChar)
-   
+    avatar = db.Column('avatar', db.String)
+    profession = db.Column('profession', db.String)
+    about = db.Column('about', db.String)
 
- 
-class Comment(db.Model)
+
+class Comment(db.Model):
     __tablename__  = "comment"
-    comment_id = db.Column('comment_id', db.VarChar, primary_key = True, unique=True)
-    message = db.Column('message', db.VarChar )
-#    creating relationships
-    post_id = db.relationship('Posts', foreignkeys = post_id)
-    username = db.relationship('User', foreignkeys = username)
-    counsellor = db.relationship('Counsellor', foreignkeys = counsellor_id)
-    
-class Likes
-     __tablename__  = "likes"
-    message = db.Column('message', db.VarChar )
-#    creating relationships
-    post_id = db.relationship('Posts', foreignkeys = post_id)
-    username = db.relationship('User', foreignkeys = username)
-    counsellor = db.relationship('Counsellor', foreignkeys = counsellor_id)
-    comment = db.relationship('Comment', foreignkeys = comment_id)
-    
-    
-    
-    
-    
-    
-    
+    #setting the primary key to comment_id
+    comment_id = db.Column('comment_id', db.String, primary_key = True, unique=True)
+    message = db.Column('message', db.String)
+
+	#creating relationships
+    post = relationship('Posts')
+    post_id = db.Column(db.String, ForeignKey('post_id'))
+    user = relationship('User')
+    username = db.Column(db.String, ForeignKey('username'))
+    counsellor = relationship('Counsellor')
+    counsellor_id = db.Column(db.String, ForeignKey('counsellor_id'))
+        
+
+
+
+class Likes(db.Model):
+    __tablename__  = "likes"
+# setting the primary key in message id 
+    message = db.Column('message_id', db.String, primary_key = True, unique = True)
+
+	#creating relationships
+    post = relationship('Posts')
+    post_id = db.Column(db.String, ForeignKey('post_id'))
+    user = relationship('User')
+    username = db.Column(db.String, ForeignKey('username'))
+    counsellor = relationship('Counsellor')
+    counsellor_id = db.Column(db.String, ForeignKey('counsellor_id'))
+    comment =relationship('Comment', ForeignKey('comment_id'))
+
     
 
 
-    
-    
-    
+
+
+
+
+
+
+
