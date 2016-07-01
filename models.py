@@ -42,6 +42,7 @@ class Posts(db.Model):
     __tablename__ ="posts"
     post_id = db.Column('post_id', db.Integer, primary_key = True)
     post = db.Column('post', db.String)
+    creation_date = db.Column('creation_date', db.Date, default = datetime.utcnow)
     
     #user relation 
     username = relationship('User')
@@ -70,6 +71,7 @@ class Comment(db.Model):
     #setting the primary key to comment_id
     comment_id = db.Column('comment_id', db.String, primary_key = True, unique=True)
     message = db.Column('message', db.String)
+    
 
 	#creating relationships
     post = relationship('Posts')
