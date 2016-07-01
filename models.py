@@ -2,7 +2,7 @@
 # begin
 
 from flask_sqlalchemy import SQLAlchemy
-from wesupport import app
+from app import db
 
 db = SQLAlchemy(app)
 
