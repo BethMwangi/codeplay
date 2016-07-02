@@ -1,12 +1,31 @@
 from app import app
 from flask import Flask, render_template, request, flash, session, url_for, redirect
+from functools import wraps
 from forms import SignupForm
 from models import db, User
+#from flask_sqlalchemy import SQLAlchemy
+
+
+#app = Flask(__name__)
+#db = SQLAlchemy(app)
 
 
 @app.route('/')
 def homepage(): 
     return "An app that greats u daily"
+
+
+
+#login required decorator
+def login_required(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if 'logged_in' in session:
+            return f(*args, **kwargs)
+        else:
+            flash ('You need to login first.')
+            return redirect(url_for('login'))
+        return wraps
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
