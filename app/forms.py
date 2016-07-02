@@ -4,6 +4,7 @@ class SignupForm(Form):
 	username = TextField("Username",  [validators.Required()])
 	email = TextField("Email",  [validators.Required(), validators.Email()])
 	password = PasswordField('Password', [validators.Required()])
+	confirm_password = PasswordField('Confirm password', [validators.Required()])
 	submit = SubmitField("Register")
 
 	def __init__(self, *args, **kwargs):
