@@ -13,6 +13,7 @@ from models import db, User
 @app.route('/')
 def homepage():
 	return render_template('layout.html')
+
 #login required decorator
 def login_required(f):
     @wraps(f)
@@ -36,6 +37,7 @@ def signup():
 			db.session.add(newuser)
 			db.session.commit()
 			session['email'] = newuser.email
-			return redirect(url_for('home'))
+
+			return redirect(url_for('homepage'))
     elif request.method == 'GET':
 		    return render_template('register.html', form=form)

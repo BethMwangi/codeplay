@@ -3,6 +3,7 @@
 <!--creating register form-->
 <div class="row" id="registerpage">
 	<div class="small-12 large-4 register form-box columns">
+		{% if success %} Thank you for your message. We'll get back to you shortly. {% else %} {% for message in get_flashed_messages() %} {{ message }} {% endfor %}
 		<form method="POST" action="">
 			<div class="row">
 				<div class="medium-6  large-12 columns">
@@ -43,4 +44,4 @@
 		</form>
 	</div>
 </div>
-{% endblock %}
+{% endif %}{% endblock %}
