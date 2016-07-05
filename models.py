@@ -4,13 +4,16 @@
 from app import app
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import ForeignKey
-#from sqlalchemy import Column
+from sqlalchemy.dialects.postgresql import JSON
 from sqlalchemy.orm import relationship
 from datetime import datetime
 datetime.utcnow()
 from app import db
 
+
 db = SQLAlchemy(app)
+
+
 
 class User(db.Model):
     #table name in database
@@ -33,9 +36,8 @@ class User(db.Model):
     def check_password(self, password):
         return check_password_hash(self.pwdhash, password)
 
-#	def check_password(self, password):
-#        return  check_password_hash(self.pwdhash, password)
-#        
+
+    
 
 
 class Posts(db.Model):
@@ -46,10 +48,10 @@ class Posts(db.Model):
     
     #user relation 
     username = relationship('User')
-    username = db.Column(db.String, ForeignKey('username'))
+    username = db.Column(db.String, ForeignKey('user.username'))
     
     counsellor = relationship('Counsellor')
-    counsellor_id = db.Column(db.String, ForeignKey('counsellor_id'))
+    counsellor_id = db.Column(db.String, ForeignKey('counsellor.counsellor_id'))
     
 #    username = db.relationship('User', foreign keys = 'username')
 #    counsellor_id = db.relationship('Counsellor', foreign keys = 'counsellor_id')
@@ -75,11 +77,11 @@ class Comment(db.Model):
 
 	#creating relationships
     post = relationship('Posts')
-    post_id = db.Column(db.String, ForeignKey('post_id'))
+    post_id = db.Column(db.String, ForeignKey('posts.post_id'))
     user = relationship('User')
-    username = db.Column(db.String, ForeignKey('username'))
+    username = db.Column(db.String, ForeignKey('user.username'))
     counsellor = relationship('Counsellor')
-    counsellor_id = db.Column(db.String, ForeignKey('counsellor_id'))
+    counsellor_id = db.Column(db.String, ForeignKey('counsellor.counsellor_id'))
         
 
 
@@ -91,12 +93,15 @@ class Likes(db.Model):
 
 	#creating relationships
     post = relationship('Posts')
-    post_id = db.Column(db.String, ForeignKey('post_id'))
+    post_id = db.Column(db.String, ForeignKey('posts.post_id'))
     user = relationship('User')
-    username = db.Column(db.String, ForeignKey('username'))
+    username = db.Column(db.String, ForeignKey('user.username'))
     counsellor = relationship('Counsellor')
-    counsellor_id = db.Column(db.String, ForeignKey('counsellor_id'))
-    comment =relationship('Comment', ForeignKey('comment_id'))
+    counsellor_id = db.Column(db.String, ForeignKey('counsellor.counsellor_id'))
+    comment =relationship('Comment', ForeignKey('comment.comment_id'))
+    
+    
+
 
     
 
