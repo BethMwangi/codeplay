@@ -149,6 +149,7 @@ h5 {
 	margin-top: 10%;
 }
 
-flash {
+.notification {
 	color: white;
+	text-align: center;
 }
