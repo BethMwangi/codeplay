@@ -33,7 +33,7 @@ def load_user(userid):
 
 @app.route('/')
 def index():
-    return "hi you"
+    return render_template('base.html')
 
 
 
@@ -63,7 +63,7 @@ def register():
             username=form.username.data,
             email=form.email.data,
             password=form.password.data)
-        return redirect(url_for('index'))
+        return redirect(url_for('post'))
     return render_template('register.html', form=form)
 
 
@@ -78,9 +78,8 @@ def login():
 
         else:
             if check_password_hash(user.password, form.password.data):
-                load_user(user)
                 flash("you have been logged in")
-                return redirect(url_for('post', current_user=current_user))
+                return redirect(url_for('post'))
             else:
                 flash("you email or password doesn't match", "error")
     return render_template('login.html', form=form)
@@ -121,7 +120,12 @@ def stream(username=None):
         template = 'user_stream.html'
     return render_template(template, stream=stream, user=user)
 
+#counsellor submitform
+@app.route('/counsellor', methods=('GET', 'POST'))
+def counsellor():
+    form = forms.CounsellorForm()
 
+    return render_template('counsellor.html', form=form)
 
 if __name__ == '__main__':
     models.initialize()

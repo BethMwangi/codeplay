@@ -120,26 +120,3 @@ def initialize():
     DATABASE.close()
 
 
-# class Post(peewee.Model):
-#     timestamp = peewee.DateTimeField(default=datetime.datetime.now)
-#     user = peewee.ForeignKeyField(
-#         rel_model=User,
-#         related_name='posts'
-
-#     )
-#     content = peewee.TextField()
-
-#     class Meta:
-#         database = DATABASE
-#         order_by = ('-timestamp',)
-
-
-# class Relationship(peewee.Model):
-#     from_user = ForeignKey(User, related_name="relationships")
-#     to_user = ForeignKey(User, related_name="related_to")
-#
-#     class Meta:
-#         database = DATABASE
-#         indexes = (
-#             (('from_user', 'to_user'), True)
-#         )

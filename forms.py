@@ -53,4 +53,39 @@ class LoginForm(Form):
 
 
 class PostForm(Form):
-  content = TextAreaField("what's app", validators=[DataRequired()])
+	content = TextAreaField("what's app", validators=[DataRequired()])
+
+class CounsellorForm(Form):
+    name = StringField(
+        'Full name',
+        validators=[
+            DataRequired(),
+            Regexp(
+                r'^[ a-zA-Z0-9_]+$',
+                message=("Name should be one word, letters, "
+                         " numbers, and underscores only")
+            ),
+            name_exists])
+    email = StringField(
+
+        'Email',
+        validators=[
+            DataRequired(),
+            Email(),
+            email_exists])
+    profession = StringField(
+        'Profession',
+        validators=[
+            DataRequired()])
+    phone= StringField(
+        'Phone number',
+        validators=[
+            DataRequired()])
+    counsellor_id= StringField(
+        'Counsellor id',
+        validators=[
+            DataRequired()])
+    location =StringField(
+        'Location',
+        validators=[
+            DataRequired()])
