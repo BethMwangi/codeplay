@@ -132,7 +132,7 @@ def stream(username=None):
 @app.route('/counsellor', methods=('GET', 'POST'))
 def counsellor():
     form = forms.CounsellorForm()
-    
+
     return render_template('counsellor.html', form=form)
 
 
