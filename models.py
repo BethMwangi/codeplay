@@ -93,7 +93,7 @@ class Post(peewee.Model):
     class Meta:
         order_by = ('-timestamp',)
         database = DATABASE
-       
+
 class Comment(peewee.Model):
     user = ForeignKeyField(User, related_name='comments')
     Comment = TextField()
