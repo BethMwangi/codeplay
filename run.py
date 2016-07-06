@@ -5,7 +5,7 @@
 
 from flask import (Flask, g, render_template, flash, redirect, url_for)
 from flask_bcrypt import check_password_hash
-from flask_login import LoginManager, logout_user, login_required, current_user
+from flask_login import LoginManager, logout_user, login_required, current_user, login_user
 
 import forms
 import models
@@ -78,8 +78,9 @@ def login():
 
         else:
             if check_password_hash(user.password, form.password.data):
-                flash("you have been logged in")
-                return redirect(url_for('post'))
+				login_user(user)
+				flash("you have been logged in")
+				return redirect(url_for('post'))
             else:
                 flash("you email or password doesn't match", "error")
     return render_template('login.html', form=form)

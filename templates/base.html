@@ -20,12 +20,19 @@
 					</div>
 					<div class="small-6 columns">
 						<ul class="menu align-right">
+
+							{% if current_user.is_authenticated %}
 							<li> <a href="{{ url_for('logout') }}" class="icon-power" title="Log out">Log Out </a></li>
+							<li>
+								<a href="">{% if current_user.is_authenticated %} {{ current_user.username}} {% endif %}</a>
+							</li>
+							{% else %}
 							<li><a href="{{ url_for('login') }}" class="icon-power" title="Log in"> Log In</a></li>
 							<li>
 								<a href="{{ url_for('counsellor') }}" class="icon-power" title="Log in">Volunteer </a>
 							</li>
 							<li><a href="{{ url_for('register') }}" class="icon-profile" title="Register">Register</a></li>
+							{% endif %}
 						</ul>
 					</div>
 				</div>
