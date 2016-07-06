@@ -4,6 +4,7 @@
 
 # creating flask object
 
+<<<<<<< HEAD
 from flask import (Flask, g, render_template, flash, redirect, url_for, session)
 from flask_bcrypt import check_password_hash
 from flask_login import LoginManager, logout_user, login_required, current_user
@@ -11,11 +12,19 @@ from models import User
 
 
 
+=======
+from flask import (Flask, g, render_template, flash, redirect, url_for)
+from flask_bcrypt import check_password_hash
+from flask_login import LoginManager, logout_user, login_required, current_user
+>>>>>>> b451b4878ac4361f5855ce71873f7c79a3f4b8f0
 
 import forms
 import models
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> b451b4878ac4361f5855ce71873f7c79a3f4b8f0
 DEBUG = True
 PORT = 5000
 HOST = '0.0.0.0'
@@ -28,8 +37,11 @@ login_manager.init_app(app)
 login_manager.login_view = 'login'
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> b451b4878ac4361f5855ce71873f7c79a3f4b8f0
 @login_manager.user_loader
 def load_user(userid):
     try:
@@ -39,6 +51,15 @@ def load_user(userid):
     except models.DoesNotExist:
         return None
 
+<<<<<<< HEAD
+=======
+@app.route('/')
+def index():
+    return render_template('base.html')
+
+
+
+>>>>>>> b451b4878ac4361f5855ce71873f7c79a3f4b8f0
 
 @app.before_request
 def before_request():
@@ -55,6 +76,7 @@ def after_request(response):
     return response
 
 
+<<<<<<< HEAD
 
 @app.route('/register', methods=('GET', 'POST'))
 def register():
@@ -134,7 +156,81 @@ def counsellor():
     form = forms.CounsellorForm()
 
     return render_template('counsellor.html', form=form)
+=======
+>>>>>>> b451b4878ac4361f5855ce71873f7c79a3f4b8f0
 
+@app.route('/register', methods=('GET', 'POST'))
+def register():
+    form = forms.RegisterForm()
+    if form.validate_on_submit():
+        flash('you registered', "success")
+        models.User.create_user(
+            username=form.username.data,
+            email=form.email.data,
+            password=form.password.data)
+        return redirect(url_for('login'))
+    return render_template('register.html', form=form)
+
+
+@app.route('/login', methods=('GET', 'POST'))
+def login():
+    form = forms.LoginForm()
+    if form.validate_on_submit():
+        try:
+            user = models.User.get(models.User.email == form.email.data)
+        except models.DoesNotExist:
+            flash("you email or password doesn't match", "error")
+
+        else:
+            if check_password_hash(user.password, form.password.data):
+                flash("you have been logged in")
+                return redirect(url_for('post'))
+            else:
+                flash("you email or password doesn't match", "error")
+    return render_template('login.html', form=form)
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash("You've logged out ! welcome back")
+    return redirect(url_for('index'))
+
+
+@app.route('/post', methods=('GET', 'POST'))
+#@login_required
+def post():
+    form = forms.PostForm()
+    if form.validate_on_submit():
+        models.Post.create(user=g.user._get_current_object(),
+                           content=form.content.data.strip())
+        flash('Message posted!Thanks', "success")
+        return redirect(url_for('index'))
+    return render_template('post.html', form=form)
+
+
+@app.route('/stream')
+@app.route('/stream/<username>')
+@login_required
+def stream(username=None):
+    template = 'stream.html'
+    if username and username != current_user.username:
+        user = models.User.select().where(models.User.username ** username).get()
+        stream = user.posts.limit(100)
+    else:
+        stream = current_user.get_stream().limit(100)
+        user = current_user
+    if username:
+        template = 'user_stream.html'
+    return render_template(template, stream=stream, user=user)
+
+#counsellor submitform
+@app.route('/counsellor', methods=('GET', 'POST'))
+def counsellor():
+    form = forms.CounsellorForm()
+
+    return render_template('counsellor.html', form=form)
 
 if __name__ == '__main__':
     models.initialize()
@@ -149,4 +245,8 @@ if __name__ == '__main__':
     except ValueError:
         pass
 
+<<<<<<< HEAD
     app.run(debug=DEBUG, host=HOST, port=PORT)
+=======
+    app.run(debug=DEBUG, host=HOST, port=PORT)
+>>>>>>> b451b4878ac4361f5855ce71873f7c79a3f4b8f0

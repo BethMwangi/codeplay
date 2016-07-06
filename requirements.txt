@@ -1,6 +1,10 @@
 Flask==0.11.1
 Flask-Bcrypt==0.7.1
 Flask-Migrate==1.8.0
+<<<<<<< HEAD
+=======
+Flask-PyMongo==0.4.1
+>>>>>>> b451b4878ac4361f5855ce71873f7c79a3f4b8f0
 Flask-SQLAlchemy==2.1
 Flask-Script==2.0.5
 Jinja2==2.8
@@ -18,6 +22,10 @@ itsdangerous==0.24
 peewee==2.8.1
 psycopg2==2.6.1
 pycparser==2.14
+<<<<<<< HEAD
+=======
+pymongo==3.2.2
+>>>>>>> b451b4878ac4361f5855ce71873f7c79a3f4b8f0
 python-editor==1.0.1
 six==1.10.0
 wsgiref==0.1.2

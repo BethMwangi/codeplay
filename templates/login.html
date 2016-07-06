@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends "base.html" %}
 {% from 'macros.html' import render_field %}
 
@@ -14,3 +15,14 @@
 
 </form>
 {% endblock %}
+=======
+{% extends "base.html" %} {% from 'macros.html' import render_field %} {% block content %}
+
+<form class="form-box" method="POST" action="" class="form">
+	<h3>wesupport</h3> {{ form.hidden_tag() }} {% for field in form %} {{ render_field(field) }} {% endfor %}
+
+	<button class="button" type="submit" id="submit"> Login </button>
+
+</form>
+{% endblock %}
+>>>>>>> b451b4878ac4361f5855ce71873f7c79a3f4b8f0

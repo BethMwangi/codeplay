@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 <head>
     <meta charset="UTF-8">
     <title>The social network</title>
@@ -53,3 +54,53 @@
 </footer>
 </body>
 </html>
+=======
+
+<head>
+	<meta charset="UTF-8">
+	<title>We Support</title>
+
+	<link rel="stylesheet" href="/static/css/foundation.css">
+	<link rel="stylesheet" href="/static/css/app.css">
+</head>
+
+<body>
+	<div class="row landing">
+
+		<header>
+			<nav>
+				<div class="row small-12 columns nav">
+					<div class="small-6 columns  ">
+						<a href="{{ url_for('index') }}" class="icon-logo"><img src="/static/img/logo.png" alt=""></a>
+					</div>
+					<div class="small-6 columns">
+						<ul class="menu align-right">
+							<li> <a href="{{ url_for('logout') }}" class="icon-power" title="Log out">Log Out </a></li>
+							<li><a href="{{ url_for('login') }}" class="icon-power" title="Log in"> Log In</a></li>
+							<li>
+								<a href="{{ url_for('counsellor') }}" class="icon-power" title="Log in">Volunteer </a>
+							</li>
+							<li><a href="{{ url_for('register') }}" class="icon-profile" title="Register">Register</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+		</header>
+		<div class="row">
+		</div>
+		{% with messages = get_flashed_messages(with_categories = True)%} {% if messages %} {% for category, message in messages %}
+		<div class="notification {{ category }}"> {{ message }} </div>
+		{% endfor %} {% endif %} {% endwith %}
+
+		<div class="row">
+			<div class="main small-6 small-centered columns">
+
+				{% block content %}{% endblock %}
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
+>>>>>>> b451b4878ac4361f5855ce71873f7c79a3f4b8f0
