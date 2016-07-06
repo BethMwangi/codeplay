@@ -63,7 +63,7 @@ def register():
             username=form.username.data,
             email=form.email.data,
             password=form.password.data)
-        return redirect(url_for('post'))
+        return redirect(url_for('login'))
     return render_template('register.html', form=form)
 
 
