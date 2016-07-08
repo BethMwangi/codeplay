@@ -1,9 +1,8 @@
-
 # This script runs the allication using a development server
 
 # creating flask object
 
-from flask import (Flask, g, render_template, flash, redirect, url_for)
+from flask import (Flask, g, render_template, flash, redirect, url_for, abort)
 from flask_bcrypt import check_password_hash
 from flask_login import LoginManager, logout_user, login_required, current_user, login_user
 
@@ -31,11 +30,10 @@ def load_user(userid):
     except models.DoesNotExist:
         return None
 
+
 @app.route('/')
 def index():
     return render_template('base.html')
-
-
 
 
 @app.before_request
@@ -51,7 +49,6 @@ def after_request(response):
     """Close the database connection after each request"""
     g.db.close()
     return response
-
 
 
 @app.route('/register', methods=('GET', 'POST'))
@@ -78,9 +75,9 @@ def login():
 
         else:
             if check_password_hash(user.password, form.password.data):
-				login_user(user)
-				flash("you have been logged in")
-				return redirect(url_for('post'))
+                login_user(user)
+                flash("you have been logged in")
+                return redirect(url_for('stream'))
             else:
                 flash("you email or password doesn't match", "error")
     return render_template('login.html', form=form)
@@ -95,7 +92,7 @@ def logout():
 
 
 @app.route('/post', methods=('GET', 'POST'))
-#@login_required
+@login_required
 def post():
     form = forms.PostForm()
     if form.validate_on_submit():
@@ -107,7 +104,7 @@ def post():
 
 
 @app.route('/stream')
-@app.route('/stream/<username>')
+@app.route('/stream/<username>', methods=('GET', 'POST'))
 @login_required
 def stream(username=None):
     template = 'stream.html'
@@ -121,12 +118,28 @@ def stream(username=None):
         template = 'user_stream.html'
     return render_template(template, stream=stream, user=user)
 
-#counsellor submitform
+
+# counsellor submitform
 @app.route('/counsellor', methods=('GET', 'POST'))
 def counsellor():
     form = forms.CounsellorForm()
 
     return render_template('counsellor.html', form=form)
+
+
+@app.route('/streaming')
+def streaming():
+    stream = models.Post.select().limit(100)
+    return render_template('stream.html', stream=stream)
+
+
+@app.route('/post/<int:post_id>')
+def view_post(post_id):
+    posts = models.Post.select().where(models.Post.id == post_id)
+    if posts.count() == 0:
+        abort(404)
+    return render_template('stream.html', stream=posts)
+
 
 if __name__ == '__main__':
     models.initialize()
