@@ -10,7 +10,7 @@
 
 .cb-slideshow:after {
 	content: '';
-	background: transparent url(../images/pattern.png) repeat top left;
+	background: transparent url(https://raw.githubusercontent.com/season6/codeplay/yvonne/static/images/pattern.png) repeat top left;
 }
 
 .cb-slideshow li span {

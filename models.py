@@ -84,15 +84,37 @@ class Counsellor(peewee.Model):
 
 
 
-class Post(peewee.Model):
-    user = ForeignKeyField(User, related_name='posts')
-    post = TextField()
-    post_id =  peewee.CharField(max_length=100)
-    timestamp = peewee.DateTimeField(default = datetime.datetime.now)
+#class Post(peewee.Model):
+#    user = ForeignKeyField(User, related_name='posts')
+#    post = TextField()
+##    post_id =  peewee.CharField(max_length=100)
+#    timestamp = peewee.DateTimeField(default = datetime.datetime.now)
+#
+#    class Meta:
+#        order_by = ('-timestamp',)
+#        database = DATABASE
 
-    class Meta:
-        order_by = ('-timestamp',)
-        database = DATABASE
+class Post(Model):
+	timestamp = DateTimeField(default = datetime.datetime.now)
+	user = ForeignKeyField(
+		rel_model = User,
+		related_name = 'posts'
+
+		)
+	content =TextField()
+	class Meta:
+		database = DATABASE
+		order_by = ('-timestamp',)
+
+class Relationship(Model):
+	from_user = ForeignKeyField(User, related_name = 'relationships')
+	to_user = ForeignKeyField(User, related_name = 'related_to')
+	class Meta:
+		database = DATABASE
+		indexes = (
+			(('from_user', 'to_user'),True)
+
+			)
 
 class Comment(peewee.Model):
     user = ForeignKeyField(User, related_name='comments')
@@ -116,7 +138,7 @@ class Like(peewee.Model):
 
 def initialize():
     DATABASE.connect()
-    DATABASE.create_tables([User, Post, Counsellor, Comment, Like], safe = True)
+    DATABASE.create_tables([User, Post, Counsellor, Comment, Like, Relationship], safe = True)
     DATABASE.close()
 
 
