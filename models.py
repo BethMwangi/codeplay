@@ -6,6 +6,8 @@ from flask_login import UserMixin
 import peewee
 from sqlalchemy import ForeignKey
 from peewee import *
+from wtforms.validators import (DataRequired, Regexp, Email,
+                                Length, EqualTo, ValidationError)
 
 
 
@@ -82,17 +84,6 @@ class Counsellor(peewee.Model):
     class Meta:
         database = DATABASE
 
-
-
-#class Post(peewee.Model):
-#    user = ForeignKeyField(User, related_name='posts')
-#    post = TextField()
-##    post_id =  peewee.CharField(max_length=100)
-#    timestamp = peewee.DateTimeField(default = datetime.datetime.now)
-#
-#    class Meta:
-#        order_by = ('-timestamp',)
-#        database = DATABASE
 
 class Post(Model):
 	timestamp = DateTimeField(default = datetime.datetime.now)

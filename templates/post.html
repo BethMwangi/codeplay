@@ -1,10 +1,26 @@
 {% extends "base.html" %} {% from 'macros.html' import render_field %} {% block content %}
+<div class="main small-4 small-centered text-center columns">
+
+	{% from 'macros.html' import render_field %}
+
+	<form class="form-4 text-center small-12 small-centered columns" method="POST" action="" class="form">
+		<p> Hey {% if current_user.is_authenticated %}{{ current_user.username}} {% endif %}, What's on your mind?</p>{{ form.hidden_tag() }} {% for field in form %} {{ render_field(field) }} {% endfor %}
 
 
-<form class="form-box" method="POST" action="">
-	<h3>Hello {% if current_user.is_authenticated %} {{ current_user.username}} {% endif %}	Say something..</h3> {{ form.hidden_tag() }} {% for field in form %} {{ render_field(field) }} {% endfor %}
-	<button class="button" type="submit" id='submit'> Post!</button>
+		<input type="submit" name="submit" value="Post">
+	</form>
 
-</form>
+</div>
 
-{% endblock %}
+{% for post in stream %}
+<article>
+	<h2>
+     <a href="{{ url_for('stream', username=post.user.username) }}">{{ post.user.username }}</a>
+        </h2>
+	<i class="clock"></i>
+	<time data-time="{{ post.timestamp }}" class="distime" datetime="{{ post.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}">{{ post.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</time><a href="{{ url_for('view_post', post_id=post.id) }}" class="view">View</a>
+	<div class="post">
+		{{ post.content }}
+	</div>
+</article>
+{% endfor %} {% endblock %}
