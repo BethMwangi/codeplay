@@ -6,6 +6,7 @@ from flask_login import UserMixin
 import peewee
 from sqlalchemy import ForeignKey
 from peewee import *
+from flask_security import Security
 
 
 
@@ -19,6 +20,9 @@ class User(UserMixin, peewee.Model):
     email = peewee.CharField(unique=True)
     password = peewee.CharField(max_length=100)
     is_admin = peewee.BooleanField(default=False)
+    registered_on = DateTimeField(default=True, null=False)
+    confirmed = BooleanField(default=True)
+    confirmed_on = DateTimeField(default=True)
 
     class Meta:
         database = DATABASE
@@ -61,7 +65,10 @@ class User(UserMixin, peewee.Model):
                     username=username,
                     email=email,
                     password=generate_password_hash(password),
-                    is_admin=admin)
+                    is_admin=admin,
+                    registered_on=datetime.datetime.now(),
+                    confirmed=confirmed,
+                    confirmed_at=confirmed_at)
 
         except peewee.IntegrityError:
             raise ValueError('User already exists')

@@ -6,9 +6,10 @@
 from flask import (Flask, g, render_template, flash, redirect, url_for)
 from flask_bcrypt import check_password_hash
 from flask_login import LoginManager, logout_user, login_required, current_user, login_user
-
+from tokenize import generate_confirmation_token, confirm_token
 import forms
 import models
+import datetime
 
 DEBUG = True
 PORT = 5000
@@ -16,6 +17,7 @@ HOST = '0.0.0.0'
 
 app = Flask(__name__)
 app.secret_key = 'codey'
+SECURITY_PASSWORD_SALT = 'my_precious'
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -62,7 +64,9 @@ def register():
         models.User.create_user(
             username=form.username.data,
             email=form.email.data,
-            password=form.password.data)
+            password=form.password.data,
+            confirmed=False)
+        token = generate_confirmation_token(user.email)
         return redirect(url_for('login'))
     return render_template('register.html', form=form)
 
@@ -121,6 +125,26 @@ def stream(username=None):
         template = 'user_stream.html'
     return render_template(template, stream=stream, user=user)
 
+
+@app.route('/confirm/<token>')
+@login_required
+def confirm_email(token):
+    try:
+        email=confirm_token(token)
+    except:
+        flash('The confirmation link is invalid or has expired.', 'danger')
+    user = User.query.filter_by(email=email).first_or_404()
+    if user.confirmed:
+        flash('Account already confirmed.Please login.', 'success')
+    else:
+        models.User.create_user(
+            confirmed = True)
+        flash('You have confirmed your account.Thanks!', 'success')
+    return redirect(url_for('login'))
+
+            
+
+
 #counsellor submitform
 @app.route('/counsellor', methods=('GET', 'POST'))
 def counsellor():
@@ -135,7 +159,9 @@ if __name__ == '__main__':
             username='yvonne',
             email='yvonne@ymail.com',
             password='hello',
-            admin=True
+            admin=True,
+           
+            
 
         )
     except ValueError:
