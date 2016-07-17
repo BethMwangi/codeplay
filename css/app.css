@@ -1,0 +1,325 @@
+body {
+    font: 12px "Helvetica";
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+
+.cont {
+    width: 100%;
+    background: #eeeeee;
+    overflow: hidden;
+    height: auto;
+    margin: 5px auto;
+    position: relative;
+    -webkit-box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.5);
+}
+
+.navigation {
+    background: #3E4858;
+}
+
+.navigation ul li {
+    border-bottom: 1px solid #323846;
+    border-top: 1px solid #515e72;
+}
+
+.navigation ul li a {
+    display: block;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px;
+    overflow: hidden;
+    font: 17px 'Pathway Gothic One', sans-serif;
+}
+
+.cover {
+    background: url(https://cdn.photographylife.com/wp-content/uploads/2014/06/Nikon-D810-Image-Sample-6.jpg) no-repeat center;
+    height: 180px;
+    width: 100%;
+    border-bottom: 5px solid #ffffff;
+    position: relative;
+    -webkit-box-shadow: 0px 5px 5px -5px rgba(50, 50, 50, 0.3);
+    -moz-box-shadow: 0px 5px 5px -5px rgba(50, 50, 50, 0.3);
+    box-shadow: 0px 5px 5px -5px rgba(50, 50, 50, 0.3);
+}
+
+.cover .head {
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.7);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.cover .head .menu {
+    background: url('http://dl.dropboxusercontent.com/s/zgj5vdngzkemvpe/list-icon.png') no-repeat center;
+    height: 32px;
+    width: 35px;
+    position: relative;
+    cursor: pointer;
+    opacity: 0.7;
+    -webkit-transition: 0.25s;
+    -moz-transition: 0.25s;
+    -o-transition: 0.25s;
+    transition: 0.25s;
+}
+
+.cover .head .menu.active,
+.cover .head .menu:hover {
+    opacity: 1;
+}
+
+.cover .avatar {
+    position: absolute;
+    background: #000;
+    border: 5px solid #ffffff;
+    cursor: pointer;
+    top: 125px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-box-shadow: 0px 5px 5px -5px rgba(50, 50, 50, 0.3);
+    -moz-box-shadow: 0px 5px 5px -5px rgba(50, 50, 50, 0.3);
+    box-shadow: 0px 5px 5px -5px rgba(50, 50, 50, 0.3);
+}
+
+.cover .avatar .light {
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMCIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 1)), color-stop(100%, rgba(255, 255, 255, 0)));
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    background: -o-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    background: -ms-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff', GradientType=0);
+    top: -65px;
+    width: 100px;
+    height: 120px;
+    position: absolute;
+    left: 15px;
+    transform: rotate(-30deg);
+    -ms-transform: rotate(-30deg);
+    /* IE 9 */
+    -webkit-transform: rotate(-30deg);
+    /* Safari and Chrome */
+}
+
+.main {
+    padding: 60px 10px 10px;
+    text-align: center;
+    align-content: center;
+}
+
+.main h1 {
+    font-weight: bold;
+    text-shadow: 0 -1px 0 #888888;
+    color: #cecece;
+    font-size: 30px;
+    margin-bottom: -3px;
+}
+
+.main h6 {
+    font: italic 16px "NotoSans";
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.main p {
+    font: 14px/18px "Arial";
+}
+
+.social {
+    margin: 10px 0 20px;
+    text-align: center;
+}
+
+
+}
+.btn {
+    border: none;
+    background: #bdc3c7;
+    color: #ffffff;
+    padding: 7px 0 6px;
+    line-height: 22px;
+    text-decoration: none;
+    text-shadow: none;
+    width: 100px;
+    display: inline-block;
+    text-align: center;
+    -webkit-transition: 0.25s;
+    -moz-transition: 0.25s;
+    -o-transition: 0.25s;
+    transition: 0.25s;
+}
+.btn.success {
+    background-color: rgba(88, 214, 141, 0.7);
+}
+.btn.danger {
+    background-color: rgba(236, 112, 99, 0.8);
+}
+.profile {
+    height: 50px;
+}
+.white {
+    color: white;
+}
+.roww {
+    margin-top: 0em;
+    margin-left: 0em;
+}
+.col {
+    text-align: left;
+}
+.blog {
+    background-color: white;
+}
+
+/*posts*/
+img,
+svg {
+    max-width: 100% height: auto object-fit: cover
+}
+.card {
+    padding: 1em display: flex flex-flow: row wrap max-width: 200px overflow: hidden font-family: 'Helvetica Neue', Helvetica, Arial background: none border-bottom: 1px solid #ddd;
+    background-color: white;
+}
+a {
+    text-decoration: none color: currentColor &:hover text-decoration: underline
+}
+.card-status {
+    position: absolute clip: rect(0, 0, 0, 0)
+}
+.card-image-slot {
+    border: 1px solid magenta;
+    margin-top: 0em;
+    margin-left: 0em;
+}
+.card-label {
+    font-weight: bold
+}
+.card-info {
+    display: flex flex-flow: column nowrap flex: 3.618 0 65% //border: 1px solid tomato
+    overflow: hidden font-size: .8rem
+}
+.card-info-heading,
+.card-info-list-item {
+    margin-bottom: 0.375em;
+    text-align: left;
+}
+.card-info-heading {
+    font-size: 1.125rem font-weight: bold color: hsl(219, 100%, 55%)
+}
+.card-actions {
+    margin-top: auto display: flex
+}
+.card-actions-set {
+    display: flex padding-right: 0.9375em border-right: 1px solid #c4c4c4
+}
+.card-actions-set:last-child {
+    padding-right: 0 padding-left: 0.9375em border-right: none
+}
+.card-actions-button,
+.card-actions-stat {
+    height: 1.5625em line-height: 1.4375
+}
+.card-actions-button {
+    display: block border-radius: .1875em line-height: 1.4375 font-size: .8rem // overriding system
+    border: none
+}
+.card-actions-button-container {
+    display: flex
+}
+.card-actions-button--follow {
+    background: linear-gradient(rgb(0, 150, 255), rgb(0, 93, 255)) color: white
+}
+.card-actions-button--follow.is-following {
+    background: linear-gradient(#34c520, #219211)
+}
+.card-actions-stat {
+    display: flex align-items: center //border: 1px solid yellow
+    padding-top: .08125em width: 100% margin-right: 1em
+}
+.card-actions-stat-icon {
+    margin-right: .5em fill: hsl(0°, 0%, 83%) flex: 0 0 1.5em
+}
+.card-info-list-item {
+    white-space: nowrap text-overflow: ellipsis overflow: hidden color: hsl(0, 0%, 23%)
+}
+.black {
+    color: black;
+}
+
+/*likes*/
+button {
+    position: absolute;
+    margin: 0;
+    width: 90px;
+    height: 40px;
+    background: $light-color;
+    border: 0;
+    font-size: .9rem;
+    font-family: Futura;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+    border-radius: 6px;
+    box-shadow: 0px 2px 0px rgba($dark-color, .1);
+    outline: none;
+    &:hover {
+        color: darken($accent-color, 10%);
+        transform: scale(1.2);
+        span {
+            opacity: 1;
+            transition: all .2s ease-in-out;
+        }
+    }
+    
+    &:active {
+        transform: scale(1.4);
+    }
+    
+    span {
+        position: absolute;
+        top: -55px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        background: darken($accent-color, 10%);
+        color: rgba($dark-color, .5);
+        padding: 10px 0;
+        border-radius: 100px;
+        opacity: 0;
+        transition: all .2s ease-in-out;
+        &:hover {
+            opacity: 1;
+        }
+        &:after {
+            position: absolute;
+            bottom: -7px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            content: "";
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid darken($accent-color);
+        }
+    }
+}
