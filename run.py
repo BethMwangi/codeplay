@@ -97,7 +97,7 @@ def post():
         models.Post.create(user=g.user._get_current_object(),
                            content=form.content.data.strip())
         flash("Message posted", 'success')
-        return redirect(url_for('post'))
+        return redirect(url_for('index'))
     return render_template('post.html', form=form)
 
 
